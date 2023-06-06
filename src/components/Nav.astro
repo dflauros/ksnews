@@ -1,0 +1,38 @@
+<div id="nav" class="fixed z-50 w-full">
+  <div
+    class="container ml-[50%] flex -translate-x-1/2 items-center justify-between p-5"
+  >
+    <a href="#home"><h3 id="home" class="text-2xl">KS NEWS</h3></a>
+    <button>
+      <img class="w-8" src="/images/bars-solid.svg" alt="button_menu" />
+    </button>
+  </div>
+</div>
+
+<script>
+  function effecNav(enable: boolean = true) {
+    const nav = document.getElementById("nav");
+    const classes = "shadow-md shadow-[rgba(0,0,0,0.2)] backdrop-blur-sm".split(
+      " "
+    );
+    if (enable) {
+      nav?.classList.add(...classes);
+    } else {
+      nav?.classList.remove(...classes);
+    }
+  }
+
+  if (window.scrollY >= 50) {
+    effecNav();
+  }
+
+  window.onscroll = () => {
+    if (window.scrollY >= 50 && window.scrollY <= 200) {
+      effecNav();
+    }
+
+    if (window.scrollY <= 50) {
+      effecNav(false);
+    }
+  };
+</script>

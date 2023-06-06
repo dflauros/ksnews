@@ -1,0 +1,95 @@
+<div class="bg-black">
+  <div
+    id="slide-container"
+    class="flex cursor-grab gap-5 overflow-x-auto pl-24 2xl:container 2xl:relative 2xl:m-auto"
+  >
+    <div class="relative h-[500px] min-w-[350px]">
+      <div
+        class="h-full w-full bg-[url('/public/images/slide/slide1.webp')] bg-cover bg-no-repeat"
+      >
+      </div>
+      <h3
+        class="absolute bottom-0 z-10 p-5 text-xl font-bold before:absolute before:bottom-0 before:left-0 before:-z-10 before:h-full before:w-full before:bg-[rgba(0,0,0,0.5)]"
+      >
+        Resident Evil: ¿Code Veronica debe ser el siguiente remake? Capcom dice
+        que está en nuestras manos.
+      </h3>
+    </div>
+    <div class="relative h-[500px] min-w-[350px]">
+      <div
+        class="h-full w-full bg-[url('/public/images/slide/slide2.jpg')] bg-cover bg-no-repeat"
+      >
+      </div>
+      <h3
+        class="absolute bottom-0 z-10 p-5 text-xl font-bold before:absolute before:bottom-0 before:left-0 before:-z-10 before:h-full before:w-full before:bg-[rgba(0,0,0,0.5)]"
+      >
+        Square Enix dice que no es necesario jugar al remake de Final Fantasy 7
+        antes de su rebirth.
+      </h3>
+    </div>
+    <div class="relative h-[500px] min-w-[350px]">
+      <div
+        class="h-full w-full bg-[url('/public/images/slide/slide3.jpg')] bg-cover bg-center"
+      >
+      </div>
+      <h3
+        class="absolute bottom-0 z-10 p-5 text-xl font-bold before:absolute before:bottom-0 before:left-0 before:-z-10 before:h-full before:w-full before:bg-[rgba(0,0,0,0.5)]"
+      >
+        Resident Evil: Welcome To Raccoon City podría tener una secuela.
+      </h3>
+    </div>
+    <div class="relative h-[500px] min-w-[350px]">
+      <div
+        class="h-full w-full bg-[url('/public/images/slide/slide4.jpg')] bg-cover bg-center"
+      >
+      </div>
+      <h3
+        class="absolute bottom-0 z-10 p-5 text-xl font-bold before:absolute before:bottom-0 before:left-0 before:-z-10 before:h-full before:w-full before:bg-[rgba(0,0,0,0.5)]"
+      >
+        Infinity Strash, el juego basado en un anime de Dragon Quest, tiene
+        fecha de lanzamiento en septiembre.
+      </h3>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slideContainer = document.getElementById("slide-container");
+  let pos = { top: 0, left: 0, x: 0, y: 0 };
+  slideContainer!.scrollLeft = 0;
+
+  const mouseDownHandler = function (e: MouseEvent) {
+    pos = {
+      // The current scroll
+      left: slideContainer!.scrollLeft,
+      top: slideContainer!.scrollTop,
+      // Get the current mouse position
+      x: e.clientX,
+      y: e.clientY,
+    };
+
+    slideContainer!.classList.replace("cursor-grab", "cursor-grabbing");
+    slideContainer!.classList.add("select-none");
+
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler);
+  };
+
+  const mouseMoveHandler = function (e: MouseEvent) {
+    // How far the mouse has been moved
+    const dx = e.clientX - pos.x;
+
+    // Scroll the element
+    slideContainer!.scrollLeft = pos.left - dx;
+  };
+
+  const mouseUpHandler = function () {
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.removeEventListener("mouseup", mouseUpHandler);
+
+    slideContainer!.classList.replace("cursor-grabbing", "cursor-grab");
+    slideContainer!.classList.remove("user-select");
+  };
+
+  slideContainer!.addEventListener("mousedown", mouseDownHandler);
+</script>

@@ -1,0 +1,87 @@
+<div class="h-screen">
+  <div class="relative h-full">
+    <img
+      id="bg_carrousel"
+      class="h-full object-cover transition-opacity duration-300 ease-in"
+      src="/images/carrousel/honkai-star-rail-leaks-firefly-character-model.jpg"
+      alt="first image carrousel"
+    />
+    <div
+      class="absolute top-0 h-full w-full bg-gradient-to-b from-transparent to-blue-950 to-95%"
+    >
+    </div>
+    <div
+      class="container absolute top-1/2 ml-[50%] flex -translate-x-1/2 -translate-y-1/2 flex-col gap-3 px-5"
+    >
+      <h2 id="title_carrousel" class="text-4xl font-bold lg:text-6xl">
+        Honkai: Star Rail se filtra nuevo personaje Firefly
+      </h2>
+      <div class="flex justify-between lg:text-lg">
+        <a id="by_carrousel" class="text-sm" href="#">MICHAEL BRANDON INGRAM</a>
+        <span id="published_carrousel" class="text-sm"
+          >PUBLISHED 28 MINUTES AGO</span
+        >
+      </div>
+      <p id="desc-short_carrousel" class="text-lg lg:text-2xl">
+        Una filtración reciente de Honkai: Star Rail ha provocado la aparición
+        de un nuevo personaje denominado "Firefly", que muestra el modelo del
+        personaje en el juego. Desde su debut el mes pasado, el juego de rol más
+        nuevo del desarrollador de Genshin Impact, HoYoverse, ya ha visto
+        múltiples filtraciones relacionadas con sus próximas incorporaciones a
+        la lista.
+      </p>
+      <button
+        class="w-fit rounded-full bg-blue-700 px-5 py-3 transition-colors duration-200 hover:bg-blue-800"
+        >Ver Completo</button
+      >
+    </div>
+  </div>
+</div>
+
+<script>
+  const data = [
+    {
+      img: "/images/carrousel/honkai-star-rail-leaks-firefly-character-model.jpg",
+      title: "Honkai: Star Rail se filtra nuevo personaje Firefly",
+      descShort:
+        'Una filtración reciente de Honkai: Star Rail ha provocado la aparición de un nuevo personaje denominado "Firefly", que muestra el modelo del personaje en el juego. Desde su debut el mes pasado, el juego de rol más nuevo del desarrollador de Genshin Impact, HoYoverse, ya ha visto múltiples filtraciones relacionadas con sus próximas incorporaciones a la lista.',
+      by: "MICHAEL BRANDON INGRAM",
+      published: "PUBLICADO HACE 28 MIN",
+    },
+    {
+      img: "/images/carrousel/genshin-impact-new-genius-invokation-tcg-features.jpg",
+      title:
+        "Genshin Impact revela nuevas funciones para la herramienta Genius Invokation TCG",
+      descShort:
+        "HoYoverse revela varias novedades de una herramienta oficial de Genius Invokation TCG diseñada para ayudar a los jugadores de Genshin Impact a optimizar sus mazos.",
+      by: "RAUL LANDAVERDE",
+      published: "PUBLICADO HACE 1 HORA",
+    },
+  ];
+
+  let i = 0;
+
+  const bgCarrousel = document.getElementById("bg_carrousel");
+  const titleCarrousel = document.getElementById("title_carrousel");
+  const byCarrousel = document.getElementById("by_carrousel");
+  const descShortCarrousel = document.getElementById("desc-short_carrousel");
+  const publishedCarrousel = document.getElementById("published_carrousel");
+
+  function callback() {
+    i++;
+    if (i > data.length - 1) {
+      i = 0;
+    }
+
+    bgCarrousel?.classList.add("opacity-0");
+    setTimeout(() => {
+      bgCarrousel!.attributes[2].value = data[i].img;
+      bgCarrousel!.classList.replace("opacity-0", "apacity-1");
+      titleCarrousel!.innerHTML = data[i].title;
+      byCarrousel!.innerHTML = data[i].by;
+      publishedCarrousel!.innerHTML = data[i].published;
+      descShortCarrousel!.innerHTML = data[i].descShort;
+    }, 200);
+  }
+  setInterval(callback, 10000);
+</script>
